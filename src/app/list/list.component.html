@@ -1,0 +1,72 @@
+<div class="example-container" *ngFor="let list of jobLists; let i = index">
+    <div class="title">
+
+        <h2>{{list.name}}<span> {{list.job.length}}</span></h2>
+        <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <!-- number job  -->
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="list.job" [cdkDropListConnectedTo]="[]" [cdkDropListConnectedTo]="[]" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of list.job; let j = index" cdkDrag>{{item}}</div>
+    </div>
+    <!-- add job -->
+    <div class="title-add">
+        <mat-form-field class="example-full-width">
+            <mat-label>Add New Job</mat-label>
+            <input matInput placeholder="" value="" [(ngModel)]="list.newJob" (keyup.enter)="addNewJob(i, list.newJob)">
+        </mat-form-field>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary" (click)="addNewJob(i, list.newJob)">ADD</button>
+        </div>
+    </div>
+</div>
+
+<!-- end todo  -->
+<!-- <div class="example-container">
+    <div class="title">
+        <h2>Done <span>(5)</span></h2>
+        <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+    <mat-icon>delete</mat-icon>
+  </button>
+    </div>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+    <div class="title-add">
+        <mat-form-field class="example-full-width">
+            <mat-label>Add New Job</mat-label>
+            <input matInput placeholder="" value="">
+        </mat-form-field>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary">ADD</button>
+        </div>
+    </div>
+</div> -->
+
+<!-- end done  -->
+<!-- <div class="example-container">
+    <div class="title">
+        <h2>Deadline<span>(4)</span></h2>
+        <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+    <mat-icon>delete</mat-icon>
+  </button>
+    </div>
+
+    <div cdkDropList #deadlineList="cdkDropList" [cdkDropListData]="deadline" [cdkDropListConnectedTo]="[deadlineList]" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of deadline" cdkDrag>{{item}}</div>
+    </div>
+
+    <div class="title-add">
+        <mat-form-field class="example-full-width">
+            <mat-label>Add New Job</mat-label>
+            <input matInput placeholder="" value="">
+        </mat-form-field>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary">ADD</button>
+        </div>
+    </div>
+</div> -->
+<!-- end-deadline  -->

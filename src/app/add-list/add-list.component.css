@@ -1,0 +1,10 @@
+.add-list {
+    display: flex;
+    width: 300px;
+    justify-content: start;
+    align-items: center;
+}
+
+.add-list button {
+    margin-left: 5px;
+}
